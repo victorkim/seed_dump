@@ -25,7 +25,7 @@ module SeedDump
       @opts['without_protection'] = env['WITHOUT_PROTECTION'].true? || (env['WITHOUT_PROTECTION'].nil? && @opts['timestamps'])
       @opts['skip_callbacks'] = env['SKIP_CALLBACKS'].true?
       @opts['models']  = env['MODELS'] || (env['MODEL'] ? env['MODEL'] : "")
-      @opts['file']    = env['FILE'] || "#{Rails.root}/db/seeds.rb.dump"
+      @opts['file']    = env['FILE'] || "#{Rails.root}/db/seeds.dump.rb"
       @opts['append']  = (env['APPEND'].true? && File.exists?(@opts['file']) )
       @opts['max']     = env['MAX'] && env['MAX'].to_i > 0 ? env['MAX'].to_i : nil
       @ar_options      = env['LIMIT'].to_i > 0 ? { :limit => env['LIMIT'].to_i } : {}
