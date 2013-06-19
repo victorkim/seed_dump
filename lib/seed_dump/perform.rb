@@ -97,14 +97,14 @@ module SeedDump
       arr.each_with_index { |r,i|
         attr_s = [];
         r.attributes.each do |k,v|
-          if Rails.version.to_f < 4
-            if ((model.attr_accessible[:default].include? k) || @opts['without_protection'] || @opts['with_id'])
-              dumpAttribute(attr_s,r,k,v)
-              @last_record.push k
-            end
-          else 
-            if (@opts['without_protection'] || @opts['with_id'])
-              dumpAttribute(attr_s,r,k,v)
+          if ( @opts['without_protection'] || @opts['with_id'])
+            if Rails.version.to_f < 4
+              if (model.attr_accessible[:default].include? k)
+                dump_attribute(attr_s,r,k,v)
+                @last_record.push k
+              end
+            else
+              dump_attribute(attr_s,r,k,v)
               @last_record.push k
             end
           end
