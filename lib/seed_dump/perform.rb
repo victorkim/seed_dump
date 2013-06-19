@@ -112,7 +112,7 @@ module SeedDump
         rows.push "#{@indent}{ " << attr_s.join(', ') << " }"
       }
 
-      if @opts['without_protection']
+      if Rails.version.to_f < 4 and @opts['without_protection']
         options = ', :without_protection => true '
       end
 
